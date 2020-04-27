@@ -1,7 +1,7 @@
 /** Main View
  *
  */
-class RandomPicture {
+export default class RandomPicture {
     constructor(root) {
         this.rootNode = root;
         const partButton = document.createElement("button");

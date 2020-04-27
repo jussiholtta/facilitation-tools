@@ -1,3 +1,4 @@
+import expect from 'expect';
 describe('Main view tests', ()=>{
     let timer = new Timer(document.documentElement);
     it('should exist', ()=>{
@@ -53,7 +54,7 @@ describe('Main view tests', ()=>{
         expect(timer.calcTimerWidth()).toEqual(timer.width/timer.TIMER_MAX*55);
     })
 
-    it('timer should count down every second and stop when button clicked', function(done) {
+    it('timer should count down every second and stop when button clicked', done => {
         timer.rangeMoving(55);
         timer.buttonClicked();
         setTimeout(function() {
