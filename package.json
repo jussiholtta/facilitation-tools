@@ -1,0 +1,22 @@
+{
+  "name": "facilitation-tools",
+  "version": "1.0.0",
+  "description": "Super simple tools for facilitators",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jussiholtta/facilitation-tools.git"
+  },
+  "author": "Jussi Hölttä",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jussiholtta/facilitation-tools/issues"
+  },
+  "homepage": "https://github.com/jussiholtta/facilitation-tools#readme",
+  "devDependencies": {
+    "jest": "^25.4.0"
+  }
+}
