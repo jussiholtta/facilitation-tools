@@ -1,7 +1,16 @@
 import RandomPicture from './RandomPicture.js';
 
 describe('Main view tests', ()=>{
-    let randompicture = new RandomPicture(document.documentElement);
+    var randompicture;
+
+    beforeEach(() => {
+        document.body.innerHTML ='<div id="RandomPicture"></div>'
+        randompicture = new RandomPicture(document.getElementById("RandomPicture"));
+    });
+    afterEach(() => {
+        jest.resetModules()
+    });
+
     it('should exist', ()=>{
         expect(randompicture).not.toBe(undefined);
     })
@@ -52,11 +61,10 @@ describe('Main view tests', ()=>{
         let pictures = document.getElementsByTagName('svg');
         expect(pictures.length).toEqual(24);
         let seen = [];
-        pictures.forEach(element => {
-            expect(seen.indexOf(element)).toEqual(-1);
-            seen.push(element);
-        });
+        for(let i = 0;i < pictures.length; i++) {
+            expect(seen.indexOf(pictures[i])).toEqual(-1);
+            seen.push(pictures[i]);
+        }
         expect(seen.length).toEqual(24);
     })
 })
-
