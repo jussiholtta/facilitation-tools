@@ -1,15 +1,8 @@
 import Timer from './timer.js';
 
 describe('Main view tests', ()=>{
-  let timer;
-
-  beforeEach(() => {
-    document.body.innerHTML ='<div id="timer"></div>';
-    timer = new Timer(document.getElementById('timer'));
-  });
-  afterEach(() => {
-    jest.resetModules();
-  });
+  document.body.innerHTML ='<div id="timer"></div>';
+  const timer = new Timer(document.getElementById('timer'));
 
   it('should exist', ()=>{
     expect(timer).not.toBe(undefined);
@@ -28,16 +21,16 @@ describe('Main view tests', ()=>{
     expect(range.min).toEqual('0');
     expect(range.max).toEqual(timer.TIMER_MAX+'');
   });
-  /*
-    it('should create svg element', ()=>{
-        expect(timer.draw).toEqual(expect.any(SVGElement));
-    })*/
-  /*
-    it('should display timer svg element', ()=>{
-        let svgTimer = document.getElementById('svgtimer');
-        expect(svgTimer).toEqual(expect.any(SVGLineElement));
-    })
-*/
+
+  it('should create svg element', ()=>{
+    expect(timer.draw.node).toEqual(expect.any(SVGElement));
+  });
+
+  it('should display timer svg element', ()=>{
+    const svgTimer = document.getElementById('svgtimer');
+    expect(svgTimer.nodeName).toBe('line');
+  });
+
   it('should have an checkbox to show/hide text with a label', ()=> {
     const checkbox = document.getElementById('togglenumbers');
     const numberlabel = document.getElementById('numberslabel');
@@ -55,7 +48,7 @@ describe('Main view tests', ()=>{
   it('should update timer and text when range is changed', ()=> {
     timer.rangeMoving(55);
     const svgTimer = document.getElementById('svgtimer');
-    expect(svgTimer.x2.baseVal.value).toEqual(55*timer.width/timer.TIMER_MAX);
+    expect(svgTimer.getAttribute('x2')).toEqual(55*timer.width/timer.TIMER_MAX+'');
     const svgTimerText = document.getElementById('svgtimertext');
     expect(svgTimerText.childNodes[0].innerHTML).toEqual('55');
   });

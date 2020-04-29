@@ -15,7 +15,6 @@ export default class Timer {
     this.partButton = document.createElement('button');
     this.partButton.id = 'button';
     this.partButton.innerHTML = 'Start';
-    this.partButton.setAttribute('onClick', 'timer.buttonClicked()');
 
     this.range = document.createElement('input');
     this.range.id = 'duration';
@@ -41,13 +40,12 @@ export default class Timer {
 
     this.width = 450;
     this.height = 300;
-    this.draw = new SVG();
-    this.draw.size(this.width, this.height);
-    this.draw.addTo('#Timer');
+    this.draw = new SVG().size(this.width, this.height).addTo('#timer');
     this.draw.viewbox(0, 0, this.width, this.height);
     this.background = this.draw.rect(this.width, this.height).fill('#dde3e1');
     this.timerTextSVG = undefined;
     this.createTimerSVG();
+    partButton.addEventListener('click', this.buttonClicked, false);
   }
 
   createTimerText() {
@@ -110,3 +108,8 @@ export default class Timer {
     }
   }
 }
+
+function init() {
+  const rand = new Timer(document.getElementById('timer'));
+}
+window.addEventListener('load', init);
