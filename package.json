@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp;webpack"
+    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp;webpack;rm -rf babeltmp"
   },
   "repository": {
     "type": "git",
