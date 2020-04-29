@@ -40,12 +40,13 @@ export default class Timer {
 
     this.width = 450;
     this.height = 300;
-    this.draw = new SVG().size(this.width, this.height).addTo('#timer');
+    this.draw = SVG().size(this.width, this.height);
     this.draw.viewbox(0, 0, this.width, this.height);
+    this.draw.addTo('#timer');
     this.background = this.draw.rect(this.width, this.height).fill('#dde3e1');
     this.timerTextSVG = undefined;
     this.createTimerSVG();
-    partButton.addEventListener('click', this.buttonClicked, false);
+    this.partButton.addEventListener('click', this.buttonClicked, false);
   }
 
   createTimerText() {
