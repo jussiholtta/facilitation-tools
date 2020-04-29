@@ -4,11 +4,10 @@
   <title>Random Picture</title>
 </head>
 <body>
-  <div id="RandomPicture"></div>
+  <div id="randompicture"></div>
 </body>
-
-<script async type="module">
-    import RandomPicture from './RandomPicture.js'
-    randompicture = new RandomPicture(document.getElementById("RandomPicture"));
+<script src="./randompicture.js"></script>
+<script>
+  random = new RandomPicture(document.getElementById('randompicture'));
 </script>
 </html>

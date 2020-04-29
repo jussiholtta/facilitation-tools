@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'timer': './timer/Timer.js',
-		'anyrandomizer': './anyrandomizer/Anyrandomizer.js',
-		'randompicture': './randompicture/RandomPicture.js',
+		'timer': './timer/timer.js',
+		'anyrandomizer': './anyrandomizer/anyrandomizer.js',
+		'randompicture': './randompicture/randompicture.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
