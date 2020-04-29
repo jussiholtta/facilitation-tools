@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/cli": "^7.8.4",
     "braces": "^3.0.2",
     "chokidar": "^3.4.0",
     "eslint": "^6.8.0",
@@ -36,7 +37,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@babel/cli": "^7.8.4",
     "@svgdotjs/svg.js": "^3.0.16"
   }
 }
