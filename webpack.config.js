@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'timer': './timer/timer.js',
-		'anyrandomizer': './anyrandomizer/anyrandomizer.js',
-		'randompicture': './randompicture/randompicture.js',
+		'timer': './babeltmp/timer.js',
+		'anyrandomizer': './babeltmp/anyrandomizer.js',
+		'randompicture': './babeltmp/randompicture.js',
+		'wtf': './babeltmp/wtf.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -14,20 +15,26 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 		inject: false,
+		filename: './wtf/index.html',
+		template: './src/wtf/index.html',
+		chunks: ['wtf']
+		}),
+		new HtmlWebpackPlugin({
+		inject: false,
 		filename: './timer/index.html',
-		template: './timer/index.html',
+		template: './src/timer/index.html',
 		chunks: ['timer']
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './anyrandomizer/index.html',
-		template: './anyrandomizer/index.html',
+		template: './src/anyrandomizer/index.html',
 		chunks: ['anyrandomizer']
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './randompicture/index.html',
-		template: './randompicture/index.html',
+		template: './src/randompicture/index.html',
 		chunks: ['randompicture']
 		})
 	],
