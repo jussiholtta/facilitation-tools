@@ -2,7 +2,8 @@
   "name": "facilitation-tools",
   "version": "1.0.0",
   "description": "Super simple tools for facilitators",
-  "main": "index.html",
+  "_main": "index.html",
+  "private": true,
   "scripts": {
     "test": "jest"
   },
@@ -20,10 +21,15 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-jest": "^25.4.0",
-    "jest": "^25.4.0"
+    "chokidar": "^3.4.0",
+    "expect": "^25.4.0",
+    "html-webpack-plugin": "^4.2.1",
+    "jest": "^25.4.0",
+    "jest-mock": "^25.4.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "expect": "^25.4.0",
-    "jest-mock": "^25.4.0"
+    "@svgdotjs/svg.js": "^3.0.16"
   }
 }

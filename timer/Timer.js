@@ -1,7 +1,9 @@
+import { SVG } from '@svgdotjs/svg.js'
+
 /** Main View
  *
  */
-class Timer {
+export default class Timer {
     constructor(root) {
         /** CONSTANTS
             */
@@ -9,8 +11,6 @@ class Timer {
         this.TIMER_DEFAULT = 180;
 
         this.rootNode = root;
-        const timerNode = document.createElement("div");
-        timerNode.id = 'timer';
 
         this.partButton = document.createElement("button");
         this.partButton.id = 'button';
@@ -34,7 +34,6 @@ class Timer {
         numberLabel.innerHTML = 'Show numbers';
         numberLabel.id = 'numberslabel'
 
-        this.rootNode.appendChild(timerNode);
         this.rootNode.appendChild(this.partButton);
         this.rootNode.appendChild(this.range);
         this.rootNode.appendChild(this.numberCheckbox);
@@ -42,7 +41,9 @@ class Timer {
 
         this.width = 450;
         this.height = 300;
-        this.draw = SVG().size(this.width, this.height).addTo("#timer");
+        this.draw = new SVG();
+        this.draw.size(this.width, this.height)
+        this.draw.addTo('#Timer');
         this.draw.viewbox(0,0,this.width,this.height);
         this.background = this.draw.rect(this.width, this.height).fill('#dde3e1');
         this.timerTextSVG = undefined;
@@ -105,4 +106,3 @@ class Timer {
             this.start();
     }
 }
-

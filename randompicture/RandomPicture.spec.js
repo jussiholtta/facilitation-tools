@@ -1,4 +1,4 @@
-import RandomPicture from './RandomPicture.js';
+import { RandomPicture } from './RandomPicture.js';
 
 describe('Main view tests', ()=>{
     var randompicture;
@@ -27,7 +27,7 @@ describe('Main view tests', ()=>{
 
     it('should have field for number, default 1, min, max 53', ()=>{
         let quantityInput = document.getElementById('quantity');
-        expect(quantityInput).toEqual(jasmine.any(HTMLInputElement));
+        expect(quantityInput).toEqual(expect.any(HTMLInputElement));
         expect(quantityInput.type).toEqual('number');
         expect(quantityInput.value).toEqual('1');
         expect(quantityInput.getAttribute("min")).toEqual('1');
@@ -43,7 +43,7 @@ describe('Main view tests', ()=>{
 
     it('should have a refresh button', ()=>{
         let button = document.getElementById('button');
-        expect(button).toEqual(jasmine.any(HTMLButtonElement));
+        expect(button).toEqual(expect.any(HTMLButtonElement));
         expect(button.innerHTML).toEqual('Refresh')
     })
 

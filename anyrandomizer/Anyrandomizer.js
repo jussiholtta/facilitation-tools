@@ -1,7 +1,7 @@
 /** Main View
  *
  */
-class Anyrandomizer {
+export default class Anyrandomizer {
     constructor(root) {
         this.rootNode = root;
         const partButton = document.createElement("button");

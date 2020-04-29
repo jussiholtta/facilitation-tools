@@ -1,36 +1,47 @@
+import Timer from './Timer.js';
+
 describe('Main view tests', ()=>{
-    let timer = new Timer(document.documentElement);
+    var timer;
+
+    beforeEach(() => {
+        document.body.innerHTML ='<div id="Timer"></div>'
+        timer = new Timer(document.getElementById("Timer"));
+    });
+    afterEach(() => {
+        jest.resetModules()
+    });
+
     it('should exist', ()=>{
         expect(timer).not.toBe(undefined);
     })
 
     it('should have a button', ()=>{
         let button = document.getElementById('button');
-        expect(button).toEqual(jasmine.any(HTMLButtonElement));
+        expect(button).toEqual(expect.any(HTMLButtonElement));
         expect(button.innerHTML).toEqual('Start')
     })
 
     it('should have range for duration, 0 min, TIMER_MAX max, TIMER_DEFAULT default', ()=>{
         let range = document.getElementById('duration');
-        expect(range).toEqual(jasmine.any(HTMLInputElement));
+        expect(range).toEqual(expect.any(HTMLInputElement));
         expect(range.value).toEqual(timer.TIMER_DEFAULT+'');
         expect(range.min).toEqual('0');
         expect(range.max).toEqual(timer.TIMER_MAX+'');
     })
-
+/*
     it('should create svg element', ()=>{
-        expect(timer.draw).toEqual(jasmine.any(SVG.Svg));
-    })
-
+        expect(timer.draw).toEqual(expect.any(SVGElement));
+    })*/
+/*
     it('should display timer svg element', ()=>{
         let svgTimer = document.getElementById('svgtimer');
-        expect(svgTimer).toEqual(jasmine.any(SVGLineElement));
+        expect(svgTimer).toEqual(expect.any(SVGLineElement));
     })
-
+*/
     it('should have an checkbox to show/hide text with a label', ()=> {
         let checkbox = document.getElementById('togglenumbers');
         let numberlabel = document.getElementById('numberslabel');
-        expect(checkbox).toEqual(jasmine.any(HTMLInputElement));
+        expect(checkbox).toEqual(expect.any(HTMLInputElement));
         expect(checkbox.checked).toBe(false);
         expect(numberlabel.innerHTML).toEqual('Show numbers');
     });
@@ -53,7 +64,7 @@ describe('Main view tests', ()=>{
         expect(timer.calcTimerWidth()).toEqual(timer.width/timer.TIMER_MAX*55);
     })
 
-    it('timer should count down every second and stop when button clicked', function(done) {
+    it('timer should count down every second and stop when button clicked', done => {
         timer.rangeMoving(55);
         timer.buttonClicked();
         setTimeout(function() {
@@ -91,4 +102,3 @@ function logslider(position) {
 
 
 })
-

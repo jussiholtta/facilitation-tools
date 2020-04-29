@@ -1,7 +1,7 @@
 /** Main View
  *
  */
-export default class RandomPicture {
+export class RandomPicture {
     constructor(root) {
         this.rootNode = root;
         const partButton = document.createElement("button");
@@ -32,6 +32,9 @@ export default class RandomPicture {
 
     getRandomPicture() {
         let i = Math.floor(Math.random() * INDEX);
+        if(this.last == i) //tetris algorithm, roll again if the same pic, but allow same after that
+            i = Math.floor(Math.random() * INDEX);
+        this.last = i;
         return PICTURES[i];
     }
 
