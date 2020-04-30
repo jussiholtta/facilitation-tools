@@ -2,17 +2,19 @@
  *
  */
 export class Anyrandomizer {
+
   constructor(root) {
+    const self = this;
     this.rootNode = root;
 
     const randomizeButton = document.createElement('button');
     randomizeButton.id = 'button';
     randomizeButton.innerHTML = 'Refresh';
-    
+
     const itemsInput = document.createElement('input');
     itemsInput.id = 'items';
     itemsInput.type = 'text';
-    itemsInput.value = 'a,b,c';
+    itemsInput.value = 'a,b,c,d,e,f';
 
     this.itemsInput = this.rootNode.appendChild(itemsInput);
     this.rootNode.appendChild(randomizeButton);
@@ -20,41 +22,38 @@ export class Anyrandomizer {
     this.init();
   }
 
-  getAnyrandomizer() {
-    let i = Math.floor(Math.random() * INDEX);
-    if (this.last == i) // tetris algorithm, roll again if the same pic, but allow same after that
-    {
-      i = Math.floor(Math.random() * INDEX);
-    }
-    this.last = i;
-    return PICTURES[i];
+  init() {
+    const input = document.getElementById('items');
+    const items = input.value.split(',');
+    this.createItems(items);
   }
 
-  init() {
-    let input = document.getElementById('items');
-    let items = input.value.split(',');
-    items.forEach(item => {
-      let i = document.createElement('div');
-      i.className = 'item'
-      i.innerHTML = item;
-      this.rootNode.appendChild(i);
+  createItems(items) {
+    items.forEach((item) => {
+      const itemdiv = document.createElement('div');
+      itemdiv.className = 'item';
+      itemdiv.innerHTML = item;
+      this.rootNode.appendChild(itemdiv);
     });
   }
+
   deleteItems() {
-    let items = document.getElementsByClassName('item');
-    let count = items.length
-    for(let i = 0;i <=items.length;i++) {
-      console.log(items[i].innerHTML)
-      items[0].remove();
+    const items = document.getElementsByClassName('item');
+    const count = items.length;
+    for (let i = 0; i < count; i++) {
+      items[0].remove(); // remove makes the array smaller, just remove the first on n times
     }
-      
-    
   }
 
   buttonClicked() {
-    const quantity = document.getElementById('quantity').value;
-    const svg = document.getElementById('svgContainer');
-    svg.innerHTML = getAnyrandomizers(quantity);
+    var self = this;
+    self.deleteItems();
+    var newinput = document.getElementById('items');
+    var newitems = newinput.value.split(',');
+    console.log(newitems);
+    shuffleArray(newitems);
+    console.log(newitems);
+    self.createItems(newitems);
   }
 }
 
@@ -68,21 +67,7 @@ function shuffleArray(array) {
   }
 }
 
-function getAnyrandomizers(quantity) {
-  let pictureString = '';
-  shuffleArray(INDEXARRAY);
-  const list = INDEXARRAY.slice(0, quantity);
-  list.forEach((number) => {
-    pictureString += PICTURES[number];
-  });
-  return pictureString;
-}
-
-const PICTURES = [];
-const INDEX = 1;//PICTURES.length;
-const INDEXARRAY = [...new Array(INDEX).keys()];
-
 function init() {
-  const rand = new Anyrandomizer(document.getElementById('anyrandom'));
+  const rand = new Anyrandomizer(document.getElementById('anyrandomizer'));
 }
 window.addEventListener('load', init);

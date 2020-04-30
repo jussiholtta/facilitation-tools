@@ -11,18 +11,12 @@ describe('Main view tests', ()=>{
     const items = document.getElementById('items');
     expect(items).toEqual(expect.any(HTMLInputElement));
     expect(items.type).toEqual('text');
-    expect(items.value).toEqual('a,b,c');
+    expect(items.value).toEqual('a,b,c,d,e,f');
   });
 
   it('should display textfield contents as divs', ()=>{
     const itemDivs = document.getElementsByClassName('item');
-    expect(itemDivs.length).toEqual(3);
-  });
-
-  it('should be able to delete item divs', ()=>{
-    anyrand.deleteItems();
-    const itemDivs = document.getElementsByClassName('item');
-    expect(itemDivs.length).toEqual(0);
+    expect(itemDivs).toHaveLength(6);
   });
 
   it('should have a randomize button', ()=>{
@@ -32,9 +26,18 @@ describe('Main view tests', ()=>{
   });
 
   it('should shuffle items when button is clicked', ()=>{
-    const picture1 = document.getElementById('svgContainer').innerHTML;
-    anyrand.refreshClicked();
-    const picture2 = document.getElementById('svgContainer').innerHTML;
-    expect(picture1).not.toEqual(picture2);
+    const items1 = document.getElementsByClassName('item');
+    expect(items1[0].innerHTML).toEqual('a');
+    anyrand.buttonClicked();
+    const items2 = document.getElementsByClassName('item');
+    expect(items1[0].innerHTML).toEqual('a');
+    expect(items2[0]).toEqual('a');
+    expect(items2).not.toEqual(items1);
+  });
+
+  it('should be able to delete item divs', ()=>{
+    anyrand.deleteItems();
+    const itemDivs = document.getElementsByClassName('item');
+    expect(itemDivs).toHaveLength(0);
   });
 });

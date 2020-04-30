@@ -42,10 +42,22 @@ export class RandomPicture {
     return PICTURES[i];
   }
 
+  getRandomPictures(quantity) {
+    var self = this;
+    let pictureString = '';
+    shuffleArray(INDEXARRAY);
+    const list = INDEXARRAY.slice(0, quantity);
+    list.forEach((number) => {
+      pictureString += PICTURES[number];
+    });
+    return pictureString;
+  }
+
   refreshClicked() {
+    var self = this;
     const quantity = document.getElementById('quantity').value;
     const svg = document.getElementById('svgContainer');
-    svg.innerHTML = getRandomPictures(quantity);
+    svg.innerHTML = self.getRandomPictures(quantity);
   }
 }
 
@@ -57,16 +69,6 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
-}
-
-function getRandomPictures(quantity) {
-  let pictureString = '';
-  shuffleArray(INDEXARRAY);
-  const list = INDEXARRAY.slice(0, quantity);
-  list.forEach((number) => {
-    pictureString += PICTURES[number];
-  });
-  return pictureString;
 }
 
 const PICTURES = ['<svg xmlns="http://www.w3.org/2000/svg" width="20mm" height="20mm" viewBox="0 0 20 20"><path d="M17.75 7.563c-.183-.575-.222-1.15 0-1.724m0 1.724l-6.238 7.233m0-1.723l6.238-7.234M2.21 10.182l6.92-6.921m8.62 2.578L9.13 3.261m-6.92 8.645l9.302 2.89c-.183-.574-.223-1.149 0-1.723m0 0l-9.303-2.89c-.323.512-.371 1.084 0 1.723" fill="none" stroke="#000" stroke-width=".2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
