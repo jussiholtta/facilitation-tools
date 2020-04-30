@@ -2,7 +2,6 @@
  *
  */
 export class Anyrandomizer {
-
   constructor(root) {
     const self = this;
     this.rootNode = root;
@@ -46,10 +45,10 @@ export class Anyrandomizer {
   }
 
   buttonClicked() {
-    var self = this;
+    const self = this;
     self.deleteItems();
-    var newinput = document.getElementById('items');
-    var newitems = newinput.value.split(',');
+    const newinput = document.getElementById('items');
+    const newitems = newinput.value.split(',');
     console.log(newitems);
     shuffleArray(newitems);
     console.log(newitems);

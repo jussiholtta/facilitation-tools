@@ -43,7 +43,7 @@ export class RandomPicture {
   }
 
   getRandomPictures(quantity) {
-    var self = this;
+    const self = this;
     let pictureString = '';
     shuffleArray(INDEXARRAY);
     const list = INDEXARRAY.slice(0, quantity);
@@ -54,7 +54,7 @@ export class RandomPicture {
   }
 
   refreshClicked() {
-    var self = this;
+    const self = this;
     const quantity = document.getElementById('quantity').value;
     const svg = document.getElementById('svgContainer');
     svg.innerHTML = self.getRandomPictures(quantity);
