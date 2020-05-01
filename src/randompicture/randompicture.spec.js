@@ -2,7 +2,8 @@ import {RandomPicture} from './randompicture.js';
 
 describe('Main view tests', ()=>{
   const randompicture = new RandomPicture(document.body);
-
+  window.randompicture = randompicture;
+  
   it('should exist', ()=>{
     expect(randompicture).not.toBe(undefined);
   });
