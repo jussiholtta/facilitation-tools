@@ -44,7 +44,7 @@ export class RandomPicture {
 
   getRandomPictures(quantity) {
     let pictureString = '';
-    shuffleArray(INDEXARRAY);
+    window.randompicture.shuffleArray(INDEXARRAY);
     const list = INDEXARRAY.slice(0, quantity);
     list.forEach((number) => {
       pictureString += PICTURES[number];
@@ -53,22 +53,21 @@ export class RandomPicture {
   }
 
   refreshClicked() {
-    
     const quantity = document.getElementById('quantity').value;
     const svg = document.getElementById('svgContainer');
     svg.innerHTML = window.randompicture.getRandomPictures(quantity);
   }
-}
-
-/**
+  /**
      * In-place shuffle algorithm stolen from https://stackoverflow.com/a/12646864
      */
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
 }
+
 
 const PICTURES = ['<svg xmlns="http://www.w3.org/2000/svg" width="20mm" height="20mm" viewBox="0 0 20 20"><path d="M17.75 7.563c-.183-.575-.222-1.15 0-1.724m0 1.724l-6.238 7.233m0-1.723l6.238-7.234M2.21 10.182l6.92-6.921m8.62 2.578L9.13 3.261m-6.92 8.645l9.302 2.89c-.183-.574-.223-1.149 0-1.723m0 0l-9.303-2.89c-.323.512-.371 1.084 0 1.723" fill="none" stroke="#000" stroke-width=".2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   '<svg xmlns="http://www.w3.org/2000/svg" width="20mm" height="20mm" viewBox="0 0 20 20"><g fill="#fff" stroke="#000" stroke-width=".2" stroke-linejoin="round"><path d="M3.3 13.7h3.8v1.8H3.3zM7.1 13.7h3.8v1.8H7.1z"/><path d="M5.3 11.9h3.8v1.8H5.3zM1.5 11.9h3.8v1.8H1.5zM12.9 11.9h3.8v1.8h-3.8zM9.1 11.9h3.8v1.8H9.1z"/><path d="M14.7 13.7h3.8v1.8h-3.8zM10.9 13.7h3.8v1.8h-3.8zM14.7 10.1h3.8v1.8h-3.8zM3.3 10.1h3.8v1.8H3.3z"/><path d="M1.5 8.3h3.8v1.8H1.5zM12.9 8.3h3.8v1.8h-3.8zM9.1 8.3h3.8v1.8H9.1zM5.3 8.3h3.8v1.8H5.3z"/><path d="M10.9 10.1h3.8v1.8h-3.8zM7.1 10.1h3.8v1.8H7.1zM1.5 10.1h1.8v1.8H1.5zM1.5 13.7h1.8v1.8H1.5zM16.7 8.3h1.8v1.8h-1.8zM16.7 11.9h1.8v1.8h-1.8zM3.3 6.5h3.8v1.8H3.3zM7.1 6.5h3.8v1.8H7.1zM14.7 6.5h3.8v1.8h-3.8zM10.9 6.5h3.8v1.8h-3.8zM1.5 6.5h1.8v1.8H1.5zM9.3 4.7h3.8v1.8H9.3zM1.5 4.7h3.8v1.8H1.5zM16.7 4.7h1.8v1.8h-1.8z"/></g></svg>',
