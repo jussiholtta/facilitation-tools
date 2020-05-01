@@ -27,12 +27,12 @@ describe('Main view tests', ()=>{
   });
 
   it('should shuffle items when button is clicked', ()=>{
-    var itemNodes1 = document.getElementsByClassName('item');
-    var items1 = Array.from(itemNodes1)
+    const itemNodes1 = document.getElementsByClassName('item');
+    const items1 = Array.from(itemNodes1);
     expect(items1[0].innerHTML).toEqual('a');
     anyrand.buttonClicked();
     const items2 = document.getElementsByClassName('item');
-    expect(items2).not.toEqual(items1); //this will fail randomly, randomness doesn't guarantee different
+    expect(items2).not.toEqual(items1); // this will fail randomly, randomness doesn't guarantee different
   });
 
   it('should be able to delete item divs', ()=>{

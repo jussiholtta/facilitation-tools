@@ -48,9 +48,7 @@ export class Anyrandomizer {
     window.rand.deleteItems();
     const newinput = document.getElementById('items');
     const newitems = newinput.value.split(',');
-    console.log(newitems);
     shuffleArray(newitems);
-    console.log(newitems);
     window.rand.createItems(newitems);
   }
 }
