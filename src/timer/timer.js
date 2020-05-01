@@ -4,6 +4,10 @@ import {SVG} from '@svgdotjs/svg.js';
  *
  */
 export default class Timer {
+  /**
+   * Create new timer
+   * @param {*} root
+   */
   constructor(root) {
     /** CONSTANTS
             */
@@ -48,18 +52,24 @@ export default class Timer {
     this.createTimerSVG();
     this.partButton.addEventListener('click', this.buttonClicked, false);
   }
-
+  /**
+  * Create timer text
+  */
   createTimerText() {
     this.timerTextSVG = this.draw.text(this.range.value).move(this.width/2, this.height/2).font({fill: '#f06', family: 'Inconsolata'});
     this.timerTextSVG.node.id = 'svgtimertext';
   }
-
+  /**
+ * Delete rendered text
+ */
   deleteTimerText() {
     this.timerTextSVG.remove();
     this.timerTextSVG = undefined;
   }
 
-
+  /**
+ * toggle text on/off
+ */
   toggleTimerText() {
     if (this.timerTextSVG == undefined) {
       this.createTimerText();
@@ -68,15 +78,25 @@ export default class Timer {
     }
   }
 
+  /**
+   * Create graphical timer
+   */
   createTimerSVG() {
     this.timerSVG = this.draw.line(0, this.height/2, this.calcTimerWidth(), this.height/2).stroke({color: '#000000', width: this.height});
     this.timerSVG.node.id = 'svgtimer';
   }
 
+  /**
+   * Calculate width of graphical timer relative to the width of the timer
+   */
   calcTimerWidth() {
     return this.width/this.TIMER_MAX*this.range.value;
   }
 
+  /**
+   * React to the range slider
+   * @param {current range value} value
+   */
   rangeMoving(value) {
     this.range.value = value;
     this.timerSVG.node.setAttribute('x2', this.calcTimerWidth());
@@ -84,6 +104,9 @@ export default class Timer {
       this.timerTextSVG.text(value+'');
     }
   }
+  /**
+   * Start timer
+   */
 
   start() {
     this.partButton.innerHTML = 'Stop';
@@ -94,13 +117,18 @@ export default class Timer {
       }
     }, 1000);
   }
-
+  /**
+ * Stop timer
+ */
   stop() {
     window.clearTimeout(this.running);
     this.running = null;
     this.partButton.innerHTML = 'Start';
   }
 
+  /**
+   * button handler
+   */
   buttonClicked() {
     if (this.running) {
       this.stop();
@@ -110,7 +138,11 @@ export default class Timer {
   }
 }
 
+/**
+ * automatically create timer when loaded
+ */
+let rand;
 function init() {
-  const rand = new Timer(document.getElementById('timer'));
+  rand = new Timer(document.getElementById('timer'));
 }
 window.addEventListener('load', init);

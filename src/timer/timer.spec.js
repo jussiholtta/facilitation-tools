@@ -14,7 +14,7 @@ describe('Main view tests', ()=>{
     expect(button.innerHTML).toEqual('Start');
   });
 
-  it('should have range for duration, 0 min, TIMER_MAX max, TIMER_DEFAULT default', ()=>{
+  it('should have range for duration, 0 min, TIMER_MAX, TIMER_DEFAULT', ()=>{
     const range = document.getElementById('duration');
     expect(range).toEqual(expect.any(HTMLInputElement));
     expect(range.value).toEqual(timer.TIMER_DEFAULT+'');
@@ -48,16 +48,20 @@ describe('Main view tests', ()=>{
   it('should update timer and text when range is changed', ()=> {
     timer.rangeMoving(55);
     const svgTimer = document.getElementById('svgtimer');
-    expect(svgTimer.getAttribute('x2')).toEqual(55*timer.width/timer.TIMER_MAX+'');
+
+    expect(svgTimer.getAttribute('x2'))
+        .toEqual(55*timer.width/timer.TIMER_MAX+'');
+
     const svgTimerText = document.getElementById('svgtimertext');
     expect(svgTimerText.childNodes[0].innerHTML).toEqual('55');
   });
 
   it('should calc timer width relative to TIMER_MAX', ()=> {
-    expect(timer.calcTimerWidth()).toEqual(timer.width/timer.TIMER_MAX*55);
+    expect(timer.calcTimerWidth())
+        .toEqual(timer.width/timer.TIMER_MAX*55);
   });
 
-  it('timer should count down every second and stop when button clicked', (done) => {
+  it('timer should count seconds and stop when button clicked', (done) => {
     timer.rangeMoving(55);
     timer.buttonClicked();
     setTimeout(function() {
