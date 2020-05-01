@@ -62,8 +62,8 @@ export default class Timer {
   */
   createTimerText() {
     this.timerTextSVG = this.draw.text(this.range.value)
-        .move(this.width/2, this.height/2)
-        .font({fill: '#f06', family: 'Inconsolata'});
+        .move(this.width/2-50, this.height/2-50)
+        .font({fill: '#c50003', anchor: 'middle', size: 100, family: 'Inconsolata'});
 
     this.timerTextSVG.node.id = 'svgtimertext';
   }
