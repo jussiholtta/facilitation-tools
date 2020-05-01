@@ -12,7 +12,7 @@ Pic 1-54 random pictures from a static set of SVG pictures.
 
 [Try it out here](dist/randompicture/index.html)
 
-### Anyrandom
+### Anyrandomizer
 Randomize a comma separated list of strings.
 
-[Try it out here](dist/anyrandom/index.html)
+[Try it out here](dist/anyrandomizers/index.html)
