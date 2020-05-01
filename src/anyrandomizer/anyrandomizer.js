@@ -1,3 +1,5 @@
+import './anyrandomizer.css';
+
 /** Main View
  *
  */

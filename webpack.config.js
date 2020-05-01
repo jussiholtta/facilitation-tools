@@ -1,16 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-function recursiveIssuer(m) {
-  if(m.issuer) {
-    return recursiveIssuer(m.issuer);
-  }
-  if(m.name) {
-    return m.name;
-  }
-  return false
-}
 
 module.exports = {
 	entry: {
@@ -24,23 +13,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name]/[name].js'
 	},
-	optimization: {
-		splitChunks: {
-			cacheGroups: {
-        criticalStyles: {
-  				name: "anyrandomizercss",
-	  			test: (m, c, entry = "anyrandomizercss") =>
-		  			m.constructor.name === "CssModule" && recursiveIssuer(m) === entry, 
-			  	chunks: "all",
-  				enforce: true
-        }
-			}
-		}
-	},
 	plugins: [
-		new MiniCssExtractPlugin({
-			filename: "[name].css"
-		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './wtf/index.html',
@@ -57,32 +30,31 @@ module.exports = {
 		inject: false,
 		filename: './anyrandomizer/index.html',
 		template: './src/anyrandomizer/index.html',
-		chunks: ['anyrandomizer','anyrandomizercss']
+		chunks: ['anyrandomizer']
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './randompicture/index.html',
 		template: './src/randompicture/index.html',
 		chunks: ['randompicture']
-		})
+		}),
 	],
-	module: {
-		rules: [	
-			{
-			test: /\.css$/,
-			use: [
-				MiniCssExtractPlugin.loader,
-				{
-					loader: "css-loader",
-					options: {
-						modules: {
-  						localIdentName: "[name]__[local]",
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insert: 'head',
+              injectType: 'singletonStyleTag',
             },
-					}
-				},
-			],
-			},
-		],
-	},
+          },
+        "css-loader",
+        ],
+      }
+    ]
+  },
 	mode: 'production'
 };

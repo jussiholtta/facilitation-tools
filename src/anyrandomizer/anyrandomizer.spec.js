@@ -1,5 +1,5 @@
 import {Anyrandomizer} from './anyrandomizer.js';
-
+import './anyrandomizer.css';
 describe('Main view tests', ()=>{
   const anyrand = new Anyrandomizer(document.body);
   window.rand = anyrand;
