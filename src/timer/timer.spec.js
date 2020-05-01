@@ -4,7 +4,7 @@ describe('Main view tests', ()=>{
   document.body.innerHTML ='<div id="timer"></div>';
   const timer = new Timer(document.getElementById('timer'));
   window.timer = timer;
-  
+
   it('should exist', ()=>{
     expect(timer).not.toBe(undefined);
   });
@@ -25,6 +25,11 @@ describe('Main view tests', ()=>{
 
   it('should create svg element', ()=>{
     expect(timer.draw.node).toEqual(expect.any(SVGElement));
+  });
+
+  it('should have a div for the svg canvas', ()=> {
+    const canvas = document.getElementById('canvas');
+    expect(canvas).toEqual(expect.any(HTMLElement));
   });
 
   it('should display timer svg element', ()=>{

@@ -37,14 +37,20 @@ export default class Timer {
     numberLabel.innerHTML = 'Show numbers';
     numberLabel.id = 'numberslabel';
 
+    const canvas = document.createElement('div');
+    canvas.id = 'canvas';
+    canvas.className = 'canvas';
+
+    this.rootNode.appendChild(canvas);
     this.rootNode.appendChild(this.partButton);
     this.rootNode.appendChild(this.range);
     this.rootNode.appendChild(this.numberCheckbox);
     this.rootNode.appendChild(numberLabel);
 
-    this.width = 450;
-    this.height = 300;
-    this.draw = SVG().addTo('#timer').size(this.width, this.height);
+    this.width = window.innerWidth - 50;
+    this.height = window.innerHeight - 100;
+    this.draw = SVG().addTo('#canvas').size(this.width, this.height);
+
     this.draw.viewbox(0, 0, this.width, this.height);
     this.background = this.draw.rect(this.width, this.height).fill('#dde3e1');
     this.timerTextSVG = undefined;

@@ -5,7 +5,6 @@ module.exports = {
 	entry: {
 		'timer': './babeltmp/timer.js',
 		'anyrandomizer': './babeltmp/anyrandomizer.js',
-		'anyrandomizercss': './src/anyrandomizer/anyrandomizer.css',
 		'randompicture': './babeltmp/randompicture.js',
 	},
 	output: {
