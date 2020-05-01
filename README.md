@@ -7,5 +7,5 @@ You can use the [editor on GitHub](https://github.com/jussiholtta/facilitation-t
 ### Timer
 Full screen timer, designed to be shared on Zoom to give a visual timer for everyone while they do something else.
 
-[Try it out here](dist/timer/)
+[Try it out here](dist/timer/index.html)
 
