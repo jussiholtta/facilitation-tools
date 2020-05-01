@@ -12,19 +12,25 @@ export class Anyrandomizer {
     randomizeButton.id = 'button';
     randomizeButton.innerHTML = 'Refresh';
 
-    const itemsInput = document.createElement('input');
-    itemsInput.id = 'items';
-    itemsInput.type = 'text';
-    itemsInput.value = 'a,b,c,d,e,f';
+    const itemInput = document.createElement('input');
+    itemInput.id = 'iteminput';
+    itemInput.type = 'text';
+    itemInput.value = 'a,b,c,d,e,f';
 
-    this.itemsInput = this.rootNode.appendChild(itemsInput);
+    this.itemContainer = document.createElement('div');
+    this.itemContainer.id = 'itemcontainer';
+    this.itemContainer.className = 'container';
+
+    this.itemInput = this.rootNode.appendChild(itemInput);
     this.rootNode.appendChild(randomizeButton);
+    this.rootNode.appendChild(this.itemContainer);
     randomizeButton.addEventListener('click', this.buttonClicked, false);
-    this.init();
+
+    this.initialLoad();
   }
 
-  init() {
-    const input = document.getElementById('items');
+  initialLoad() {
+    const input = document.getElementById('iteminput');
     const items = input.value.split(',');
     this.createItems(items);
   }
@@ -34,7 +40,7 @@ export class Anyrandomizer {
       const itemdiv = document.createElement('div');
       itemdiv.className = 'item';
       itemdiv.innerHTML = item;
-      this.rootNode.appendChild(itemdiv);
+      this.itemContainer.appendChild(itemdiv);
     });
   }
 
@@ -48,7 +54,7 @@ export class Anyrandomizer {
 
   buttonClicked() {
     window.rand.deleteItems();
-    const newinput = document.getElementById('items');
+    const newinput = document.getElementById('iteminput');
     const newitems = newinput.value.split(',');
     shuffleArray(newitems);
     window.rand.createItems(newitems);

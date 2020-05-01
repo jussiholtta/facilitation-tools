@@ -1,3 +1,5 @@
 .container {
+   width: 100%;
    display: grid; 
+   grid-auto-columns: 25%;
 }

@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp;webpack;#rm -rf babeltmp"
+    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp --copy-files;webpack;rm -rf babeltmp"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,7 @@
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.0.16"
-  }
+  },
+  "jest": {
+    "moduleNameMapper": { "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js" }  }
 }

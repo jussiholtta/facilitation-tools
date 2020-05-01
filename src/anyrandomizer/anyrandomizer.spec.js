@@ -1,5 +1,5 @@
 import {Anyrandomizer} from './anyrandomizer.js';
-import './anyrandomizer.css';
+
 describe('Main view tests', ()=>{
   const anyrand = new Anyrandomizer(document.body);
   window.rand = anyrand;
@@ -9,10 +9,16 @@ describe('Main view tests', ()=>{
   });
 
   it('should have field for text', ()=>{
-    const items = document.getElementById('items');
-    expect(items).toEqual(expect.any(HTMLInputElement));
-    expect(items.type).toEqual('text');
-    expect(items.value).toEqual('a,b,c,d,e,f');
+    const itemInput = document.getElementById('iteminput');
+    expect(itemInput).toEqual(expect.any(HTMLInputElement));
+    expect(itemInput.type).toEqual('text');
+    expect(itemInput.value).toEqual('a,b,c,d,e,f');
+  });
+
+  it('should have container for divs', ()=> {
+    const itemContainer = document.getElementById('itemcontainer');
+    expect(itemContainer).toEqual(expect.any(HTMLElement));
+    expect(itemContainer.className).toEqual('container');
   });
 
   it('should display textfield contents as divs', ()=>{
