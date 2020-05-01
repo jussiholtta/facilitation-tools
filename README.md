@@ -15,4 +15,4 @@ Pic 1-54 random pictures from a static set of SVG pictures.
 ### Anyrandomizer
 Randomize a comma separated list of strings.
 
-[Try it out here](dist/anyrandomizers/index.html)
+[Try it out here](dist/anyrandomizer/index.html)
