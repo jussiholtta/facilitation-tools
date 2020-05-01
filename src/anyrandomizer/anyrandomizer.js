@@ -45,14 +45,13 @@ export class Anyrandomizer {
   }
 
   buttonClicked() {
-    const self = this;
-    self.deleteItems();
+    window.rand.deleteItems();
     const newinput = document.getElementById('items');
     const newitems = newinput.value.split(',');
     console.log(newitems);
     shuffleArray(newitems);
     console.log(newitems);
-    self.createItems(newitems);
+    window.rand.createItems(newitems);
   }
 }
 
@@ -65,8 +64,9 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
+let rand;
 function init() {
-  const rand = new Anyrandomizer(document.getElementById('anyrandomizer'));
+  rand = new Anyrandomizer(document.getElementById('anyrandomizer'));
+  window.rand = rand;
 }
 window.addEventListener('load', init);

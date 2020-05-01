@@ -2,6 +2,7 @@ import {Anyrandomizer} from './anyrandomizer.js';
 
 describe('Main view tests', ()=>{
   const anyrand = new Anyrandomizer(document.body);
+  window.rand = anyrand;
 
   it('should exist', ()=>{
     expect(anyrand).not.toBe(undefined);
@@ -26,13 +27,12 @@ describe('Main view tests', ()=>{
   });
 
   it('should shuffle items when button is clicked', ()=>{
-    const items1 = document.getElementsByClassName('item');
+    var itemNodes1 = document.getElementsByClassName('item');
+    var items1 = Array.from(itemNodes1)
     expect(items1[0].innerHTML).toEqual('a');
     anyrand.buttonClicked();
     const items2 = document.getElementsByClassName('item');
-    expect(items1[0].innerHTML).toEqual('a');
-    expect(items2[0]).toEqual('a');
-    expect(items2).not.toEqual(items1);
+    expect(items2).not.toEqual(items1); //this will fail randomly, randomness doesn't guarantee different
   });
 
   it('should be able to delete item divs', ()=>{
