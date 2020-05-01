@@ -3,8 +3,10 @@
 <head>
   <title>Anyrandomizer</title>
   <script type="module" src="anyrandomizer.js"></script>
+  <style> <%= JSON.stringify(htmlWebpackPlugin.files) %> </style>
+
 </head>
 <body>
-  <div id="anyrandomizer"></div>
+  <div id="anyrandomizer" class="container"></div>
 </body>
 </html>
