@@ -7,19 +7,12 @@ module.exports = {
 		'anyrandomizer': './babeltmp/anyrandomizer.js',
 		'anyrandomizercss': './src/anyrandomizer/anyrandomizer.css',
 		'randompicture': './babeltmp/randompicture.js',
-		'wtf': './babeltmp/wtf.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name]/[name].js'
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
-		inject: false,
-		filename: './wtf/index.html',
-		template: './src/wtf/index.html',
-		chunks: ['wtf']
-		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './timer/index.html',

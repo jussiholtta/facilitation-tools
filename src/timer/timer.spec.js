@@ -3,7 +3,8 @@ import Timer from './timer.js';
 describe('Main view tests', ()=>{
   document.body.innerHTML ='<div id="timer"></div>';
   const timer = new Timer(document.getElementById('timer'));
-
+  window.timer = timer;
+  
   it('should exist', ()=>{
     expect(timer).not.toBe(undefined);
   });

@@ -44,9 +44,8 @@ export default class Timer {
 
     this.width = 450;
     this.height = 300;
-    this.draw = SVG().size(this.width, this.height);
+    this.draw = SVG().addTo('#timer').size(this.width, this.height);
     this.draw.viewbox(0, 0, this.width, this.height);
-    this.draw.addTo('#timer');
     this.background = this.draw.rect(this.width, this.height).fill('#dde3e1');
     this.timerTextSVG = undefined;
     this.createTimerSVG();
@@ -56,7 +55,10 @@ export default class Timer {
   * Create timer text
   */
   createTimerText() {
-    this.timerTextSVG = this.draw.text(this.range.value).move(this.width/2, this.height/2).font({fill: '#f06', family: 'Inconsolata'});
+    this.timerTextSVG = this.draw.text(this.range.value)
+        .move(this.width/2, this.height/2)
+        .font({fill: '#f06', family: 'Inconsolata'});
+
     this.timerTextSVG.node.id = 'svgtimertext';
   }
   /**
@@ -82,20 +84,23 @@ export default class Timer {
    * Create graphical timer
    */
   createTimerSVG() {
-    this.timerSVG = this.draw.line(0, this.height/2, this.calcTimerWidth(), this.height/2).stroke({color: '#000000', width: this.height});
+    this.timerSVG = this.draw.line(0, this.height/2,
+        this.calcTimerWidth(), this.height/2)
+        .stroke({color: '#000000', width: this.height});
     this.timerSVG.node.id = 'svgtimer';
   }
 
   /**
-   * Calculate width of graphical timer relative to the width of the timer
-   */
+ *
+ * @return {number} calculated timer width
+ */
   calcTimerWidth() {
     return this.width/this.TIMER_MAX*this.range.value;
   }
 
   /**
    * React to the range slider
-   * @param {current range value} value
+   * @param {number} value
    */
   rangeMoving(value) {
     this.range.value = value;
@@ -107,13 +112,12 @@ export default class Timer {
   /**
    * Start timer
    */
-
   start() {
     this.partButton.innerHTML = 'Stop';
     this.running = setTimeout(()=> {
       this.rangeMoving(this.range.value - 1);
       if (this.range.value > 0) {
-        this.start();
+        window.timer.start();
       }
     }, 1000);
   }
@@ -122,18 +126,18 @@ export default class Timer {
  */
   stop() {
     window.clearTimeout(this.running);
-    this.running = null;
-    this.partButton.innerHTML = 'Start';
+    window.timer.running = null;
+    window.timer.partButton.innerHTML = 'Start';
   }
 
   /**
    * button handler
    */
   buttonClicked() {
-    if (this.running) {
-      this.stop();
+    if (window.timer.running) {
+      window.timer.stop();
     } else {
-      this.start();
+      window.timer.start();
     }
   }
 }
@@ -141,8 +145,7 @@ export default class Timer {
 /**
  * automatically create timer when loaded
  */
-let rand;
 function init() {
-  rand = new Timer(document.getElementById('timer'));
+  window.timer = new Timer(document.getElementById('timer'));
 }
 window.addEventListener('load', init);
