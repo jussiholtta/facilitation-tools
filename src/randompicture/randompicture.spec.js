@@ -18,13 +18,13 @@ describe('Main view tests', ()=>{
     expect(label[0].innerHTML).toEqual('Quantity');
   });
 
-  it('should have field for number, default 1, min, max 53', ()=>{
+  it('should have field for number, default 1, min, max 52', ()=>{
     const quantityInput = document.getElementById('quantity');
     expect(quantityInput).toEqual(expect.any(HTMLInputElement));
     expect(quantityInput.type).toEqual('number');
     expect(quantityInput.value).toEqual('1');
     expect(quantityInput.getAttribute('min')).toEqual('1');
-    expect(quantityInput.getAttribute('max')).toEqual('53');
+    expect(quantityInput.getAttribute('max')).toEqual('52');
   });
 
   it('should be able to choose random picture string', ()=>{
