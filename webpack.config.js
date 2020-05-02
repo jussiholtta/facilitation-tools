@@ -6,12 +6,19 @@ module.exports = {
 		'timer': './babeltmp/timer.js',
 		'anyrandomizer': './babeltmp/anyrandomizer.js',
 		'randompicture': './babeltmp/randompicture.js',
+		'aa': './babeltmp/aa.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name]/[name].js'
 	},
 	plugins: [
+		new HtmlWebpackPlugin({
+		inject: false,
+		filename: './aa/index.html',
+		template: './src/aa/index.html',
+		chunks: ['aa']
+		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './timer/index.html',

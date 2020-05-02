@@ -1,5 +1,5 @@
 import {SVG} from '@svgdotjs/svg.js';
-
+import './timer.css';
 /** Main View
  *
  */
