@@ -1,9 +1,9 @@
-import './anyrandomizer.css';
+import './pickrandom.css';
 
 /** Main View
  *
  */
-export class Anyrandomizer {
+export class PickRandom {
   constructor(root) {
     this.rootNode = root;
 
@@ -22,7 +22,7 @@ export class Anyrandomizer {
 
     this.itemInput = this.rootNode.appendChild(itemInput);
     this.rootNode.appendChild(randomizeButton);
-    this.rootNode.appendChild(this.itemContainer);
+    this.rootNode.parentNode.appendChild(this.itemContainer);
     randomizeButton.addEventListener('click', this.buttonClicked, false);
 
     this.initialLoad();
@@ -31,32 +31,19 @@ export class Anyrandomizer {
   initialLoad() {
     const input = document.getElementById('iteminput');
     const items = input.value.split(',');
-    this.createItems(items);
+    this.pickItem(items[0]);
   }
 
-  createItems(items) {
-    items.forEach((item) => {
-      const itemdiv = document.createElement('div');
-      itemdiv.className = 'item';
-      itemdiv.innerHTML = item;
-      this.itemContainer.appendChild(itemdiv);
-    });
-  }
-
-  deleteItems() {
-    const items = document.getElementsByClassName('item');
-    const count = items.length;
-    for (let i = 0; i < count; i++) {
-      items[0].remove(); // remove makes the array smaller, just remove the first on n times
-    }
+  pickItem(newitem) {
+    const itemdiv = document.getElementById('itemcontainer');
+    itemdiv.innerHTML = newitem;
   }
 
   buttonClicked() {
-    window.rand.deleteItems();
     const newinput = document.getElementById('iteminput');
     const newitems = newinput.value.split(',');
     shuffleArray(newitems);
-    window.rand.createItems(newitems);
+    window.rand.pickItem(newitems[0]);
   }
 }
 
@@ -71,7 +58,7 @@ function shuffleArray(array) {
 }
 let rand;
 function init() {
-  rand = new Anyrandomizer(document.getElementById('anyrandomizer'));
+  rand = new PickRandom(document.getElementById('pickrandom'));
   window.rand = rand;
 }
 window.addEventListener('load', init);
