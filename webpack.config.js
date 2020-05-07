@@ -7,6 +7,7 @@ module.exports = {
 		'anyrandomizer': './babeltmp/anyrandomizer.js',
 		'randompicture': './babeltmp/randompicture.js',
 		'pickrandom': './babeltmp/pickrandom.js',
+		'randommetaphor': './babeltmp/randommetaphor.js',
 		'aa': './babeltmp/aa.js',
 	},
 	output: {
@@ -37,6 +38,12 @@ module.exports = {
 		filename: './pickrandom/index.html',
 		template: './src/pickrandom/index.html',
 		chunks: ['pickrandom']
+		}),
+		new HtmlWebpackPlugin({
+		inject: false,
+		filename: './randommetaphor/index.html',
+		template: './src/randommetaphor/index.html',
+		chunks: ['randommetaphor']
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
