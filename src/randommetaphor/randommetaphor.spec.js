@@ -14,10 +14,15 @@ describe('Main view tests', ()=>{
     expect(itemContainer.className).toEqual('container');
   });
 
+  /* it('should not load metaphor on load', ()=> { // teachable version like this
+    const itemContainer = document.getElementById('itemcontainer');
+    expect(itemContainer.innerHTML).toEqual('');
+  });*/
+
   it('should have a refresh button', ()=>{
     const button = document.getElementById('button');
     expect(button).toEqual(expect.any(HTMLButtonElement));
-    expect(button.innerHTML).toEqual('Refresh');
+    expect(button.innerHTML).toEqual('New Metaphor');
   });
 
   it('should shuffle items when button is clicked', ()=>{

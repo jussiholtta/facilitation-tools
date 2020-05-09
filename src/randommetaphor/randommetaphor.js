@@ -9,9 +9,11 @@ export class RandomMetaphor {
 
     const randomizeButton = document.createElement('button');
     randomizeButton.id = 'button';
-    randomizeButton.innerHTML = 'Refresh';
+    randomizeButton.innerHTML = 'New Metaphor';
+    randomizeButton.className = 'tch-btn-header-secondary'; // teachable class name
 
-    this.itemContainer = document.createElement('div');
+
+    this.itemContainer = document.createElement('h1');
     this.itemContainer.id = 'itemcontainer';
     this.itemContainer.className = 'container';
 
@@ -20,14 +22,14 @@ export class RandomMetaphor {
     randomizeButton.addEventListener('click', this.buttonClicked, false);
 
     this.METAPHORS = [
-      'the world is my stage',
+      'all the world\'s a stage',
       'music to my ears',
       'rings a bell',
       'up in the air',
       'broke the bank',
-      ' a piece of cake',
+      'a piece of cake',
       'not my cup of tea',
-      'a heart of stone',
+      'heart of stone',
       'strength of an ox',
       'stab me in the back',
       'face the music',
@@ -40,10 +42,19 @@ export class RandomMetaphor {
       'eaten up',
       'at the back of my mind',
       'took an unexpected direction',
-      'love is a battlefield',
       'time is money',
+      'a fish out of water',
+      'conscience is a man\'s compass',
+      'cold feet',
+      'night owl',
+      'beat a dead horse',
+      'early bird',
+      'couch potato',
+      'heart of a lion',
+      'heart of gold',
+      'light up the room',
     ];
-    this.init();
+    this.init(); // disabled for teachable
   }
 
   init() {
