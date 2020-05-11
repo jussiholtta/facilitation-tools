@@ -110,4 +110,6 @@ const INDEXARRAY = [...new Array(INDEX).keys()];
 function init() {
   window.aa = new AA(document.getElementById('aa'));
 }
-window.addEventListener('load', init);
+
+window.aainit = init; // for teachable
+// window.addEventListener('load', init);

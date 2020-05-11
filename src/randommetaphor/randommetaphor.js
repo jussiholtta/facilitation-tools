@@ -87,4 +87,5 @@ function init() {
   rand = new RandomMetaphor(document.getElementById('randommetaphor'));
   window.rand = rand;
 }
-window.addEventListener('load', init);
+
+window.randommetaphorinit = init;
