@@ -29,3 +29,14 @@
     border-color: #e1e3e4;
     color: #0f8d82;
 }
+
+#aa {
+    width: 100%;
+    max-width: 600px;
+    max-height: 80%;
+    margin: 0 auto;
+}
+
+#svgContainer {
+    width: 80%;
+}
