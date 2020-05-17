@@ -1,0 +1,37 @@
+.container {
+   width: 100%;
+   font-family: 'Helvetica';
+   text-transform: uppercase;
+}
+
+.tch-btn-header-secondary {
+   min-width: 140px;
+   padding-left: 30px !important;
+   padding-right: 30px !important;
+   max-width: 570px;
+   color: white;
+   background-color: #fff;
+   border: 1px solid #a9a9a9;
+   padding: 8px 20px 7px 20px !important;
+   font-size: 12px;
+   line-height: 1.72222;
+   border-radius: 3px;
+   font-weight: 600 !important;
+   display: inline-block;
+   cursor: pointer;
+   font-weight: 600;
+   border-radius: 30px !important;
+   text-align: center;
+   padding: 8px 20px 7px 20px !important;
+   font-size: 12px;
+   line-height: 1.72222;
+   border-radius: 3px;
+   font-weight: 600 !important;
+   display: inline-block;
+   cursor: pointer;
+   font-weight: 600;
+   border-radius: 30px !important;
+   text-align: center;
+   border-color: #e1e3e4;
+   color: #0f8d82;
+}

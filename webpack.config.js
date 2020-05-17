@@ -8,6 +8,7 @@ module.exports = {
 		'randompicture': './babeltmp/randompicture.js',
 		'pickrandom': './babeltmp/pickrandom.js',
 		'randommetaphor': './babeltmp/randommetaphor.js',
+		'metaphorcourse': './babeltmp/metaphorcourse.js',
 		'aa': './babeltmp/aa.js',
 	},
 	output: {
@@ -35,6 +36,12 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
+		filename: './randompicture/index.html',
+		template: './src/randompicture/index.html',
+		chunks: ['randompicture']
+		}),
+		new HtmlWebpackPlugin({
+		inject: false,
 		filename: './pickrandom/index.html',
 		template: './src/pickrandom/index.html',
 		chunks: ['pickrandom']
@@ -47,9 +54,9 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 		inject: false,
-		filename: './randompicture/index.html',
-		template: './src/randompicture/index.html',
-		chunks: ['randompicture']
+		filename: './metaphorcourse/index.html',
+		template: './src/metaphorcourse/index.html',
+		chunks: ['metaphorcourse']
 		}),
 	],
   module: {
