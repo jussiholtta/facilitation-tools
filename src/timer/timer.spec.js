@@ -55,8 +55,8 @@ describe('Main view tests', ()=>{
     timer.rangeMoving(55);
     const svgTimer = document.getElementById('svgtimer');
 
-    expect(svgTimer.getAttribute('x2'))
-        .toEqual(55*timer.width/timer.TIMER_MAX+'');
+    expect(parseFloat(svgTimer.getAttribute('x2')))
+        .toBeCloseTo(55*timer.width/timer.TIMER_MAX,5);
 
     const svgTimerText = document.getElementById('svgtimertext');
     expect(svgTimerText.childNodes[0].innerHTML).toEqual('55');
