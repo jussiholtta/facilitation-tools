@@ -56,7 +56,7 @@ describe('Main view tests', ()=>{
     const svgTimer = document.getElementById('svgtimer');
 
     expect(parseFloat(svgTimer.getAttribute('x2')))
-        .toBeCloseTo(55*timer.width/timer.TIMER_MAX,5);
+        .toBeCloseTo(55*timer.width/timer.TIMER_MAX, 5);
 
     const svgTimerText = document.getElementById('svgtimertext');
     expect(svgTimerText.childNodes[0].innerHTML).toEqual('55');
