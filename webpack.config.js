@@ -10,18 +10,13 @@ module.exports = {
 		'randommetaphor': './babeltmp/randommetaphor.js',
 		'metaphorcourse': './babeltmp/metaphorcourse.js',
 		'aa': './babeltmp/aa.js',
+		'clock': './babeltmp/clock.js',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name]/[name].js'
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
-		inject: false,
-		filename: './aa/index.html',
-		template: './src/aa/index.html',
-		chunks: ['aa']
-		}),
 		new HtmlWebpackPlugin({
 		inject: false,
 		filename: './timer/index.html',
@@ -57,6 +52,18 @@ module.exports = {
 		filename: './metaphorcourse/index.html',
 		template: './src/metaphorcourse/index.html',
 		chunks: ['metaphorcourse']
+		}),
+		new HtmlWebpackPlugin({
+		inject: false,
+		filename: './aa/index.html',
+		template: './src/aa/index.html',
+		chunks: ['aa']
+		}),
+		new HtmlWebpackPlugin({
+		inject: false,
+		filename: './clock/index.html',
+		template: './src/clock/index.html',
+		chunks: ['clock']
 		}),
 	],
   module: {

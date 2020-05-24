@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp --copy-files;webpack;rm -rf babeltmp"
+    "build": "eslint --fix src/**/**/*js; babel src/* -d babeltmp --copy-files;webpack;rm -rf babeltmp",
+    "devbuild": "babel src/* -d babeltmp --copy-files;webpack;rm -rf babeltmp"
   },
   "repository": {
     "type": "git",
